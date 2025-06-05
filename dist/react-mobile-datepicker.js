@@ -492,10 +492,12 @@ var DatePickerItem = function (_Component) {
         _this.currentIndex = MIDDLE_INDEX; // 滑动中当前日期的索引
         _this.moveDateCount = 0; // 一次滑动移动了多少个时间
         _this._moveToTimer = null;
+        _this.wheelSensitivity = 0.3;
 
         _this.state = {
             translateY: MIDDLE_Y,
-            marginTop: (_this.currentIndex - MIDDLE_INDEX) * DATE_HEIGHT
+            marginTop: (_this.currentIndex - MIDDLE_INDEX) * DATE_HEIGHT,
+            hoverIndex: null // Для отслеживания hover
         };
 
         _this.renderDatepickerItem = _this.renderDatepickerItem.bind(_this);
@@ -503,6 +505,10 @@ var DatePickerItem = function (_Component) {
         _this.handleContentMouseDown = _this.handleContentMouseDown.bind(_this);
         _this.handleContentMouseMove = _this.handleContentMouseMove.bind(_this);
         _this.handleContentMouseUp = _this.handleContentMouseUp.bind(_this);
+        _this.handleWheel = _this.handleWheel.bind(_this);
+        _this.handleMouseEnter = _this.handleMouseEnter.bind(_this);
+        _this.handleMouseLeave = _this.handleMouseLeave.bind(_this);
+
         return _this;
     }
 
@@ -519,6 +525,7 @@ var DatePickerItem = function (_Component) {
             viewport.addEventListener('touchmove', this.handleContentTouch, false);
             viewport.addEventListener('touchend', this.handleContentTouch, false);
             viewport.addEventListener('mousedown', this.handleContentMouseDown, false);
+            viewport.addEventListener('wheel', this.handleWheel, { passive: false });
         }
     }, {
         key: 'componentWillReceiveProps',
@@ -556,7 +563,7 @@ var DatePickerItem = function (_Component) {
             viewport.removeEventListener('touchmove', this.handleContentTouch, false);
             viewport.removeEventListener('touchend', this.handleContentTouch, false);
             viewport.removeEventListener('mousedown', this.handleContentMouseDown, false);
-
+            viewport.removeEventListener('wheel', this.handleWheel);
             clearTimeout(this._moveToTimer);
         }
     }, {
@@ -749,6 +756,42 @@ var DatePickerItem = function (_Component) {
             document.removeEventListener('mousemove', this.handleContentMouseMove);
             document.removeEventListener('mouseup', this.handleContentMouseUp);
         }
+    }, {
+        key: 'handleWheel',
+        value: function handleWheel(event) {
+            event.preventDefault();
+            if (this.animating) return;
+
+            var direction = event.deltaY > 0 ? 1 : -1;
+
+            // Проверка на границы
+            var date = this.state.dates[MIDDLE_INDEX];
+            var _props3 = this.props,
+                max = _props3.max,
+                min = _props3.min;
+
+            if (direction === 1 && date.getTime() > max.getTime()) return;
+            if (direction === -1 && date.getTime() < min.getTime()) return;
+
+            // Рассчитываем количество шагов
+            var steps = Math.max(1, Math.round(Math.abs(event.deltaY) * this.wheelSensitivity / 100));
+
+            for (var i = 0; i < steps; i++) {
+                this._updateDates(direction);
+            }
+
+            this._moveTo(this.currentIndex);
+        }
+    }, {
+        key: 'handleMouseEnter',
+        value: function handleMouseEnter(index) {
+            this.setState({ hoverIndex: index });
+        }
+    }, {
+        key: 'handleMouseLeave',
+        value: function handleMouseLeave() {
+            this.setState({ hoverIndex: null });
+        }
 
         /**
          * 渲染一个日期DOM对象
@@ -759,7 +802,9 @@ var DatePickerItem = function (_Component) {
     }, {
         key: 'renderDatepickerItem',
         value: function renderDatepickerItem(date, index) {
-            var className = date < this.props.min || date > this.props.max ? 'disabled' : '';
+            var _this4 = this;
+
+            var className = [date < this.props.min || date > this.props.max ? 'disabled' : '', this.state.hoverIndex === index ? 'hover' : ''].filter(Boolean).join(' ');
 
             var formatDate = void 0;
             if (isFunction(this.props.format)) {
@@ -772,14 +817,18 @@ var DatePickerItem = function (_Component) {
                 'li',
                 {
                     key: index,
-                    className: className },
+                    className: className,
+                    onMouseEnter: function onMouseEnter() {
+                        return _this4.handleMouseEnter(index);
+                    },
+                    onMouseLeave: this.handleMouseLeave },
                 formatDate
             );
         }
     }, {
         key: 'render',
         value: function render() {
-            var _this4 = this;
+            var _this5 = this;
 
             var scrollStyle = formatCss({
                 transform: 'translateY(' + this.state.translateY + 'px)',
@@ -793,7 +842,7 @@ var DatePickerItem = function (_Component) {
                     'div',
                     {
                         ref: function ref(viewport) {
-                            return _this4.viewport = viewport;
+                            return _this5.viewport = viewport;
                         } // eslint-disable-line
                         , className: 'datepicker-viewport' },
                     React__default.createElement(
