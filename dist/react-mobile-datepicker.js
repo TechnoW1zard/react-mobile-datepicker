@@ -1,7 +1,7 @@
 (function (global, factory) {
 	typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('react'), require('react-dom')) :
 	typeof define === 'function' && define.amd ? define(['react', 'react-dom'], factory) :
-	(global.$npm_package_amdName = factory(global.React,global.ReactDOM));
+	(global.ReactMobileDatepicker = factory(global.React,global.ReactDOM));
 }(this, (function (React,ReactDOM) { 'use strict';
 
 function __$styleInject(css, ref) {
@@ -1234,4 +1234,4 @@ ModalDatePicker.defaultProps = defaultProps;
 return ModalDatePicker;
 
 })));
-//# sourceMappingURL=$npm_package_main.map
+//# sourceMappingURL=react-mobile-datepicker.js.map
