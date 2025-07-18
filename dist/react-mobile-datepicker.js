@@ -37,6 +37,80 @@ ReactDOM = ReactDOM && ReactDOM.hasOwnProperty('default') ? ReactDOM['default'] 
 __$styleInject(".datepicker-modal {\r\n    position: absolute;\r\n    right: 0;\r\n    bottom: 0;\r\n    width: 100%;\r\n    height: 100%;\r\n    background-color: rgba(0, 0, 0, .6);\r\n    z-index: 999;\r\n    display: -webkit-box;\r\n    display: -ms-flexbox;\r\n    display: flex;\r\n    -webkit-box-align: center;\r\n        -ms-flex-align: center;\r\n            align-items: center;\r\n    -webkit-box-pack: center;\r\n        -ms-flex-pack: center;\r\n            justify-content: center;\r\n}\r\n\r\n.datepicker {\r\n    position: absolute;\r\n    left: 0;\r\n    bottom: 0;\r\n    width: 100%;\r\n    z-index: 1;\r\n    font-size: 16px;\r\n    text-align: center;\r\n    font-family: arial,verdana,sans-serif;\r\n    -webkit-box-sizing: content-box;\r\n            box-sizing: content-box;\r\n    -webkit-font-smoothing: antialiased;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n}\r\n\r\n.datepicker .datepicker-header {\r\n        padding: 0 .5em;\r\n        min-height: 2em;\r\n        line-height: 2em;\r\n        font-size: 1.125em;\r\n    }\r\n\r\n.datepicker .datepicker-navbar {\r\n        padding: 0 .5em .5em .5em;\r\n        overflow: hidden;\r\n    }\r\n\r\n.datepicker .datepicker-navbar-btn {\r\n        height: 2.5em;\r\n        line-height: 2.5em;\r\n        float: right;\r\n        padding: 0 1em;\r\n        cursor: pointer;\r\n    }\r\n\r\n.datepicker .datepicker-caption {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        padding: .5em .25em;\r\n    }\r\n\r\n.datepicker .datepicker-caption-item {\r\n        -webkit-box-flex: 1;\r\n            -ms-flex: 1;\r\n                flex: 1;\r\n        margin: 0 .25em;\r\n        height: 40px;\r\n        line-height: 40px;\r\n        font-size: 1.2em;\r\n    }\r\n\r\n.datepicker .datepicker-content {\r\n        display: -webkit-box;\r\n        display: -ms-flexbox;\r\n        display: flex;\r\n        padding: .5em .25em;\r\n    }\r\n\r\n.datepicker .datepicker-col-1 {\r\n        -webkit-box-flex: 1;\r\n            -ms-flex: 1;\r\n                flex: 1;\r\n        margin: 0 .25em;\r\n    }\r\n\r\n.datepicker .datepicker-viewport {\r\n        height: 200px;\r\n        position: relative;\r\n        overflow: hidden\r\n    }\r\n\r\n.datepicker .datepicker-viewport::after {\r\n    content: '';\r\n    position: absolute;\r\n    z-index: 2;\r\n    top: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    pointer-events: none;\r\n}\r\n\r\n.datepicker .datepicker-wheel {\r\n        position: absolute;\r\n        height: 40px;\r\n        top: 50%;\r\n        margin-top: -20px;\r\n        width: 100%;\r\n    }\r\n\r\n.datepicker .datepicker-scroll {\r\n        list-style-type: none;\r\n        padding: 0\r\n    }\r\n\r\n.datepicker .datepicker-scroll>li {\r\n    height: 40px;\r\n    line-height: 40px;\r\n    font-size: 1.375em;\r\n    cursor: pointer;\r\n}\r\n\r\n.datepicker {\r\n\r\n    /* default */\r\n}\r\n\r\n.datepicker.default {\r\n    background-color: #f7f7f7;\r\n}\r\n\r\n.datepicker.default .datepicker-header {\r\n            color: #4eccc4;\r\n}\r\n\r\n.datepicker.default .datepicker-wheel {\r\n            border-top: 1px solid #4eccc4;\r\n            border-bottom: 1px solid #4eccc4;\r\n}\r\n\r\n.datepicker.default .datepicker-caption-item {\r\n            color: rgb(59, 59, 59);\r\n}\r\n\r\n.datepicker.default .datepicker-scroll li {\r\n                color: rgb(59, 59, 59);\r\n            }\r\n\r\n.datepicker.default .datepicker-scroll li.disabled {\r\n                color: rgb(191, 191, 191);\r\n            }\r\n\r\n.datepicker.default .datepicker-navbar-btn {\r\n            color: #4eccc4;\r\n}\r\n\r\n.datepicker {\r\n\r\n    /* dark */\r\n}\r\n\r\n.datepicker.dark {\r\n    background-color: #263238;\r\n}\r\n\r\n.datepicker.dark .datepicker-header {\r\n            color: #50ccc4;\r\n}\r\n\r\n.datepicker.dark .datepicker-wheel {\r\n            border-top: 1px solid #50ccc4;\r\n            border-bottom: 1px solid #50ccc4;\r\n}\r\n\r\n.datepicker.dark .datepicker-caption-item {\r\n            color: rgb(201, 203, 204);\r\n}\r\n\r\n.datepicker.dark .datepicker-scroll li {\r\n                color: rgb(201, 203, 204);\r\n            }\r\n\r\n.datepicker.dark .datepicker-scroll li.disabled {\r\n                color: rgb(87, 96, 100);\r\n            }\r\n\r\n.datepicker.dark .datepicker-navbar-btn {\r\n            color: #50ccc4;\r\n}\r\n\r\n.datepicker {\r\n\r\n    /* ios */\r\n}\r\n\r\n.datepicker.ios {\r\n    background-color: #f7f7f7;\r\n}\r\n\r\n.datepicker.ios .datepicker-col-1 {margin: 0;\r\n}\r\n\r\n.datepicker.ios .datepicker-header {\r\n            color: rgb(59, 59, 59);\r\n            padding: 0 3.5em;\r\n}\r\n\r\n.datepicker.ios .datepicker-viewport::after {\r\n    background: -webkit-gradient(linear,left top, left bottom,from(#f7f7f7),color-stop(52%, rgba(245, 245, 245, 0)),color-stop(48%, rgba(245, 245, 245, 0)),to(#f7f7f7));\r\n    background: linear-gradient(#f7f7f7,rgba(245, 245, 245, 0)52%,rgba(245, 245, 245, 0)48%,#f7f7f7);\r\n}\r\n\r\n.datepicker.ios .datepicker-wheel {\r\n            border-top: 1px solid #dbdbdb;\r\n            border-bottom: 1px solid #dbdbdb;\r\n}\r\n\r\n.datepicker.ios .datepicker-caption-item {\r\n            color: rgb(59, 59, 59);\r\n}\r\n\r\n.datepicker.ios .datepicker-scroll li {\r\n                color: rgb(59, 59, 59);\r\n            }\r\n\r\n.datepicker.ios .datepicker-scroll li.disabled {\r\n                color: rgb(191, 191, 191);\r\n            }\r\n\r\n.datepicker.ios .datepicker-navbar {\r\n            position: absolute;\r\n            z-index: 2;\r\n            top: 0;\r\n            left: 0;\r\n            width: 100%;\r\n            padding: 0;\r\n            border-bottom: 1px solid #acacac;\r\n}\r\n\r\n.datepicker.ios .datepicker-navbar-btn {\r\n            color: #007aff;\r\n}\r\n\r\n.datepicker.ios .datepicker-navbar-btn:nth-child(2) {\r\n    float: left;\r\n}\r\n\r\n.datepicker.ios .datepicker-content {\r\n            padding-top: 48px;\r\n}\r\n\r\n.datepicker.ios .datepicker-header + .datepicker-content {\r\n          padding-top: 0;\r\n}\r\n\r\n.datepicker.ios .datepicker-caption + .datepicker-content {\r\n          padding-top: 0;\r\n}\r\n\r\n.datepicker {\r\n\r\n    /* android */\r\n}\r\n\r\n.datepicker.android, .datepicker.android-dark {\r\n    background-color: #f5f5f5;\r\n}\r\n\r\n.datepicker.android .datepicker-header, .datepicker.android-dark .datepicker-header {\r\n            color: #31b6e7;\r\n            border-bottom: 2px solid #31b6e7;\r\n}\r\n\r\n.datepicker.android .datepicker-col-1, .datepicker.android-dark .datepicker-col-1 {margin: 0 .625em;\r\n}\r\n\r\n.datepicker.android .datepicker-viewport::after, .datepicker.android-dark .datepicker-viewport::after {\r\n    background-image: -webkit-gradient(linear,left top, left bottom,from(#f5f5f5),color-stop(52%, rgba(245, 245, 245, 0)),color-stop(48%, rgba(245, 245, 245, 0)),to(#f5f5f5));\r\n    background-image: linear-gradient(#f5f5f5,rgba(245, 245, 245, 0)52%,rgba(245, 245, 245, 0)48%,#f5f5f5);\r\n}\r\n\r\n.datepicker.android .datepicker-wheel, .datepicker.android-dark .datepicker-wheel {\r\n            border-top: 2px solid #31b6e7;\r\n            border-bottom: 2px solid #31b6e7;\r\n}\r\n\r\n.datepicker.android .datepicker-caption-item, .datepicker.android-dark .datepicker-caption-item {\r\n            color: rgb(56, 56, 56);\r\n}\r\n\r\n.datepicker.android .datepicker-scroll li, .datepicker.android-dark .datepicker-scroll li {\r\n                font-size: 1.125em;\r\n                color: rgb(56, 56, 56);\r\n            }\r\n\r\n.datepicker.android .datepicker-scroll li.disabled, .datepicker.android-dark .datepicker-scroll li.disabled {\r\n                color: rgb(188, 188, 188);\r\n            }\r\n\r\n.datepicker.android .datepicker-navbar, .datepicker.android-dark .datepicker-navbar {\r\n            display: -webkit-box;\r\n            display: -ms-flexbox;\r\n            display: flex;\r\n            border-top: 1px solid #d9d4d4;\r\n            padding: 0;\r\n}\r\n\r\n.datepicker.android .datepicker-navbar-btn, .datepicker.android-dark .datepicker-navbar-btn {\r\n            padding: 0;\r\n            color: #000;\r\n            -webkit-box-flex: 1;\r\n                -ms-flex: 1;\r\n                    flex: 1;\r\n}\r\n\r\n.datepicker.android .datepicker-navbar-btn:nth-child(2), .datepicker.android-dark .datepicker-navbar-btn:nth-child(2) {\r\n    border-left: 1px solid #d9d4d4;\r\n}\r\n\r\n.datepicker {\r\n\r\n    /* android-dark */\r\n}\r\n\r\n.datepicker.android-dark {\r\n    background-color: #292829;\r\n}\r\n\r\n.datepicker.android-dark .datepicker-viewport::after {\r\n    background-image: -webkit-gradient(linear,left top, left bottom,from(#282828),color-stop(52%, rgba(40, 40, 40, 0)),color-stop(48%, rgba(40, 40, 40, 0)),to(#282828));\r\n    background-image: linear-gradient(#282828,rgba(40, 40, 40, 0)52%,rgba(40, 40, 40, 0)48%,#282828);\r\n}\r\n\r\n.datepicker.android-dark .datepicker-caption-item {\r\n            color: rgb(199, 199, 199);\r\n}\r\n\r\n.datepicker.android-dark .datepicker-scroll li {\r\n                color: rgb(199, 199, 199);\r\n            }\r\n\r\n.datepicker.android-dark .datepicker-scroll li.disabled {\r\n                color: rgb(88, 88, 88);\r\n            }\r\n\r\n.datepicker.android-dark .datepicker-navbar { border-color: #424542;\r\n}\r\n\r\n.datepicker.android-dark .datepicker-navbar-btn {\r\n            color: #fff;\r\n}\r\n\r\n.datepicker.android-dark .datepicker-navbar-btn:nth-child(2) {\r\n    border-color: #424542;\r\n}\r\n", {});
 
 /**
+ * 默认属性
+ */
+var defaultProps = {
+    isPopup: true,
+    isOpen: false,
+    theme: 'default',
+    value: new Date(),
+    min: new Date(1970, 0, 1),
+    max: new Date(2050, 0, 1),
+    showFooter: true,
+    showHeader: true,
+    showCaption: false,
+    dateConfig: {
+        'year': {
+            format: 'YYYY',
+            caption: 'Year',
+            step: 1
+        },
+        'month': {
+            format: 'M',
+            caption: 'Mon',
+            step: 1
+        },
+        'date': {
+            format: 'D',
+            caption: 'Day',
+            step: 1
+        }
+    },
+    headerFormat: 'YYYY/MM/DD',
+    confirmText: '完成',
+    cancelText: '取消',
+    onChange: function onChange() {},
+    onSelect: function onSelect() {},
+    onCancel: function onCancel() {}
+};
+
+/**
+ * 日期配置
+ */
+var dateConfigMap = {
+    'year': {
+        format: 'YYYY',
+        caption: 'Year',
+        step: 1
+    },
+    'month': {
+        format: 'M',
+        caption: 'Mon',
+        step: 1
+    },
+    'date': {
+        format: 'D',
+        caption: 'Day',
+        step: 1
+    },
+    'hour': {
+        format: 'hh',
+        caption: 'Hour',
+        step: 1
+    },
+    'minute': {
+        format: 'mm',
+        caption: 'Min',
+        step: 1
+    },
+    'second': {
+        format: 'hh',
+        caption: 'Sec',
+        step: 1
+    }
+};
+
+/**
  * @module time工具
  */
 
@@ -865,80 +939,6 @@ var DatePickerItem = function (_Component) {
 }(React.Component);
 
 /**
- * 默认属性
- */
-var defaultProps = {
-    isPopup: true,
-    isOpen: false,
-    theme: 'default',
-    value: new Date(),
-    min: new Date(1970, 0, 1),
-    max: new Date(2050, 0, 1),
-    showFooter: true,
-    showHeader: true,
-    showCaption: false,
-    dateConfig: {
-        'year': {
-            format: 'YYYY',
-            caption: 'Year',
-            step: 1
-        },
-        'month': {
-            format: 'M',
-            caption: 'Mon',
-            step: 1
-        },
-        'date': {
-            format: 'D',
-            caption: 'Day',
-            step: 1
-        }
-    },
-    headerFormat: 'YYYY/MM/DD',
-    confirmText: '完成',
-    cancelText: '取消',
-    onChange: function onChange() {},
-    onSelect: function onSelect() {},
-    onCancel: function onCancel() {}
-};
-
-/**
- * 日期配置
- */
-var dateConfigMap = {
-    'year': {
-        format: 'YYYY',
-        caption: 'Year',
-        step: 1
-    },
-    'month': {
-        format: 'M',
-        caption: 'Mon',
-        step: 1
-    },
-    'date': {
-        format: 'D',
-        caption: 'Day',
-        step: 1
-    },
-    'hour': {
-        format: 'hh',
-        caption: 'Hour',
-        step: 1
-    },
-    'minute': {
-        format: 'mm',
-        caption: 'Min',
-        step: 1
-    },
-    'second': {
-        format: 'hh',
-        caption: 'Sec',
-        step: 1
-    }
-};
-
-/**
  * @module DatePicker Component
  */
 
@@ -1177,15 +1177,15 @@ var DatePicker = function (_Component) {
                         'a',
                         {
                             className: 'datepicker-navbar-btn',
-                            onClick: this.handleFinishBtnClick },
-                        confirmText
+                            onClick: this.props.onCancel },
+                        cancelText
                     ),
                     React__default.createElement(
                         'a',
                         {
                             className: 'datepicker-navbar-btn',
-                            onClick: this.props.onCancel },
-                        cancelText
+                            onClick: this.handleFinishBtnClick },
+                        confirmText
                     )
                 ),
                 customBottom
