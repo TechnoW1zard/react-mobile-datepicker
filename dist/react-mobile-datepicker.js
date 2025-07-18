@@ -1197,26 +1197,69 @@ var DatePicker = function (_Component) {
 var Modal = function (_Component) {
     inherits(Modal, _Component);
 
-    function Modal() {
+    function Modal(props) {
         classCallCheck(this, Modal);
-        return possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).apply(this, arguments));
+
+        var _this = possibleConstructorReturn(this, (Modal.__proto__ || Object.getPrototypeOf(Modal)).call(this, props));
+
+        _this.state = {
+            shouldRender: props.isOpen,
+            isVisible: props.isOpen
+        };
+        return _this;
     }
 
     createClass(Modal, [{
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate(prevProps) {
+            var _this2 = this;
+
+            if (prevProps.isOpen !== this.props.isOpen) {
+                if (this.props.isOpen) {
+                    // Показываем модальное окно
+                    this.setState({ shouldRender: true }, function () {
+                        // Небольшая задержка для triggering CSS transition
+                        setTimeout(function () {
+                            _this2.setState({ isVisible: true });
+                        }, 10);
+                    });
+                } else {
+                    // Скрываем модальное окно
+                    this.setState({ isVisible: false });
+                    // Удаляем из DOM после завершения анимации
+                    setTimeout(function () {
+                        _this2.setState({ shouldRender: false });
+                    }, this.props.animationDuration);
+                }
+            }
+        }
+    }, {
         key: 'render',
         value: function render() {
-            if (!this.props.isOpen) {
+            if (!this.state.shouldRender) {
                 return null;
             }
 
-            return React__default.cloneElement(this.props.children, _extends({}, this.props, { key: 'modal' }), null);
+            var modalStyle = {
+                opacity: this.state.isVisible ? 1 : 0,
+                transform: this.state.isVisible ? 'translateY(0)' : 'translateY(20px)',
+                transition: 'opacity ' + this.props.animationDuration + 'ms ease-in-out, transform ' + this.props.animationDuration + 'ms ease-in-out'
+            };
+
+            var childrenWithProps = React__default.cloneElement(this.props.children, _extends({}, this.props, {
+                key: 'modal',
+                style: _extends({}, this.props.children.props.style, modalStyle)
+            }), null);
+
+            return childrenWithProps;
         }
     }]);
     return Modal;
 }(React.Component);
 
 Modal.defaultProps = {
-    isOpen: false
+    isOpen: false,
+    animationDuration: 300
 };
 
 function EnhanceDatePicker(_ref) {
